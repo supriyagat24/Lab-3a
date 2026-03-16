@@ -56,13 +56,42 @@ void display()
     }
 }
 
+void search()
+{
+    int item, i, flag = 0;
+
+    if(front == -1)
+    {
+        printf("Queue is Empty\n");
+        return;
+    }
+
+    printf("Enter element to search: ");
+    scanf("%d",&item);
+
+    for(i = front; i <= rear; i++)
+    {
+        if(queue[i] == item)
+        {
+            printf("Element found at position %d\n", i);
+            flag = 1;
+            break;
+        }
+    }
+
+    if(flag == 0)
+    {
+        printf("Element not found\n");
+    }
+}
+
 int main()
 {
     int choice;
 
     while(1)
     {
-        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Exit\n");
+        printf("\n1.Enqueue\n2.Dequeue\n3.Display\n4.Search\n5.Exit\n");
         printf("Enter your choice: ");
         scanf("%d",&choice);
 
@@ -74,8 +103,10 @@ int main()
                     break;
             case 3: display();
                     break;
-            case 4: return 0;
-            default: printf("Invalid Choice\n");
+            case 4: search();
+                    break;
+            case 5: return 0;
+            default: printf("Invalid choice\n");
         }
     }
 }
